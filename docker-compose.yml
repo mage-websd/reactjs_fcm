@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./code:/app/code
+      - '/app/code/node_modules'
+    environment:
+      # - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - CI=true
+    # command: bash /app/run.sh
+    command: yarn start
+    # command: node index.js
