@@ -4,14 +4,14 @@ importScripts('https://www.gstatic.com/firebasejs/7.13.2/firebase-messaging.js')
 
 
 var firebaseConfig = {
-    apiKey: "QAQWQWQ_212111212SSDF2323233DFSSG",
-    authDomain: "soda-project-sa123.firebaseapp.com",
-    databaseURL: "https://soda-project-sa123.firebaseio.com",
-    projectId: "soda-project-sa123",
-    storageBucket: "soda-project-sa123.appspot.com",
-    messagingSenderId: "1212121212121212",
-    appId: "1:1212121212121212:web:qwq121212441dsd122",
-    measurementId: "G-QWQWQWWQW"
+    apiKey: "AIzaSyC6DSw4IoX-yMnEtEVrQpsAjuw2msGnpc8",
+    authDomain: "doanh-nghiep-tthue.firebaseapp.com",
+    databaseURL: "https://doanh-nghiep-tthue.firebaseio.com",
+    projectId: "doanh-nghiep-tthue",
+    storageBucket: "doanh-nghiep-tthue.appspot.com",
+    messagingSenderId: "441126068786",
+    appId: "1:441126068786:web:3c80e6e3fdd2a9b6ce122b",
+    measurementId: "G-0LXJNP7RWS"
   };
 
 firebase.initializeApp(firebaseConfig);
@@ -19,7 +19,7 @@ firebase.initializeApp(firebaseConfig);
 
 const messaging = firebase.messaging();
 
-messaging.usePublicVapidKey("QWQWQWQWQWQW34354SDFFD4545FGG-RT56sd-gfgh554GHHHG674DFGDGDGDGGGD");
+messaging.usePublicVapidKey("BMfQXs0mzekKf7PBsWWnj1EbmKAPX4jHQemyXzulR1Oi4_H_-SEEgHEbKACA_FE-rGRFctuWyi108lY4vXOvBBg");
 
 messaging.setBackgroundMessageHandler(function(payload) {
   const promiseChain = clients
