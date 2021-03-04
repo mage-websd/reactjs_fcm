@@ -3,23 +3,24 @@ importScripts('https://www.gstatic.com/firebasejs/7.13.2/firebase-messaging.js')
 // importScripts('https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js');
 
 
-var firebaseConfig = {
-    apiKey: "AIzaSyC6DSw4IoX-yMnEtEVrQpsAjuw2msGnpc8",
-    authDomain: "doanh-nghiep-tthue.firebaseapp.com",
-    databaseURL: "https://doanh-nghiep-tthue.firebaseio.com",
-    projectId: "doanh-nghiep-tthue",
-    storageBucket: "doanh-nghiep-tthue.appspot.com",
-    messagingSenderId: "441126068786",
-    appId: "1:441126068786:web:3c80e6e3fdd2a9b6ce122b",
-    measurementId: "G-0LXJNP7RWS"
+const firebaseConfig = {
+    apiKey: "AIzaSyAmV_2PPi91wWgqHTbz3jUllb51YtptaEw",
+    authDomain: "soda-project-ec980.firebaseapp.com",
+    databaseURL: "https://soda-project-ec980.firebaseio.com",
+    projectId: "soda-project-ec980",
+    storageBucket: "soda-project-ec980.appspot.com",
+    messagingSenderId: "922024481511",
+    appId: "1:922024481511:web:fcee24e11b400cefe90842",
+    measurementId: "G-0QBRRR1P9E"
   };
+
+
 
 firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 
 const messaging = firebase.messaging();
-
-messaging.usePublicVapidKey("BMfQXs0mzekKf7PBsWWnj1EbmKAPX4jHQemyXzulR1Oi4_H_-SEEgHEbKACA_FE-rGRFctuWyi108lY4vXOvBBg");
+messaging.usePublicVapidKey("   AAAA1qzxEuc:APA91bFiqKFOEeAktSjpNsuqGU_pysZqTPeKpUp0icqYEqhyF-hgJygBr5I08Jo8rLkmE6dV0W8EHJNFotdpVQHZ7Sy4jh8ueAiY09iJ-qV57_JJL5OEbq1jlhXfxvRboFYxKmOJwYf2");
 
 messaging.setBackgroundMessageHandler(function(payload) {
   const promiseChain = clients

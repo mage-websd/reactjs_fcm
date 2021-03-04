@@ -2,9 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 // import messaging from './firebase/init.js';
-import Btn from '../firebase/fbbtn.js';
-import LoginFacebook from '../firebase/login_facebook.js';
-import LoginGoogle from '../firebase/login_google.js';
+// import Btn from '../firebase/fbbtn.js';
+// import LoginFacebook from '../firebase/login_facebook.js';
+// import LoginGoogle from '../firebase/login_google.js';
 
 function Home() {
   return (
@@ -22,11 +22,9 @@ function Home() {
         >
           Learn React
         </a>
-        <Btn />
-        <LoginFacebook />
-        <div>
-          <LoginGoogle />
-        </div>
+        
+        
+        
       </header>
     </div>
   );
