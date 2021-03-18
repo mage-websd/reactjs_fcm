@@ -29,6 +29,12 @@ export default [
         isPrivate: false,
         component: import('../containers/firebase/DBFS'),
     },
+    {
+        path: '/firebase/analytics',
+        exact: true,
+        isPrivate: false,
+        component: import('../containers/firebase/analytics'),
+    },
     // {
     //     path: '/map',
     //     exact: true,
