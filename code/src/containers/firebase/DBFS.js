@@ -1,23 +1,24 @@
 import React from 'react';
 import { firebaseInit } from "./init";
-
 import { FirestoreProvider } from 'react-firestore';
+import Layout from "../../components/Layout";
 
-export default class DBFS extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.db = firebaseInit.firestore();
-    }
-  handleClick = () => {
-    this.db.collection("theme").doc('zzz_sample').get().then((doc) => {
+const DBFS = () => {
+    const db = firebaseInit.firestore();
+    // constructor(props) {
+    //     super(props);
+    //     db = ;
+    // }
+  function handleClick(e) {
+    e.preventDefault();
+    db.collection("theme").doc('zzz_sample').get().then((doc) => {
         let id = doc.id;
         let data = doc.data();
         console.log('theme', id, data);
     });
   }
-  handleClickAdd = () => {
-    this.db.collection("theme").doc("zzz_sample").set({
+  function handleClickAdd() {
+    db.collection("theme").doc("zzz_sample").set({
         'date_last': '2020-12-12',
         'title': 'xxxx',
         'week': 1,
@@ -26,14 +27,17 @@ export default class DBFS extends React.Component {
     });
   }
 
-  handleClickQuote = () => {
-    this.db.collection("quote").doc('117dd3987b1b46c29456').get().then((doc) => {
-        let id = doc.id;
-        let data = doc.data();
-        console.log('Quote', id, data);
+  function handleClickQuote() {
+    db.collection("quote").limit(3).get().then((docs) => {
+        docs.forEach(function(doc) {
+          let id = doc.id;
+          let data = doc.data();
+          console.log('Quote', id, data);
+        });
+        
     });
   }
-  handleClickAddQuote = () => {
+  function handleClickAddQuote () {
     let data = {
         'author_name': 'x1',
         'author_kid': 1,
@@ -47,65 +51,29 @@ export default class DBFS extends React.Component {
         'date': '2001-01-01',
         'date_last': '2000-05-05'
     };
-    this.db.collection("quote").doc("117dd3987b1b46c29456").update({
+    db.collection("quote").doc("117dd3987b1b46c29456").update({
       'like_count': 5,
     }).then((response) => {
         console.log("Quote add done", response);
     });
   }
 
-  handleClickEmail = () => {
-    this.db.collection("email_sub").doc('x1').get().then((doc) => {
+  function handleClickEmail() {
+    db.collection("email_sub").doc('x1').get().then((doc) => {
         let id = doc.id;
         let data = doc.data();
         console.log('Sub', id, data);
     });
   }
-  handleClickAddEmail = () => {
-    this.db.collection("email_sub").doc("x2").set({
+  function handleClickAddEmail() {
+    db.collection("email_sub").doc("x2").set({
         'email': 'x2',
     }).then((response) => {
         console.log("Sub add done", response);
     });
   }
 
-  render() {
-    return (
-      <div>
-      <div>
-        <button className="js-push-button" onClick={this.handleClick}>
-            File store get theme
-          </button>
-
-          <button className="js-push-button" onClick={this.handleClickAdd}>
-            add theme
-          </button>
-       </div>
-       <div>
-       <button className="js-push-button" onClick={this.handleClickQuote}>
-            Quote get
-          </button>
-
-          <button className="js-push-button" onClick={this.handleClickAddQuote}>
-            Quote add
-          </button>
-       </div>
-
-       <div>
-       <button className="js-push-button" onClick={this.handleClickEmail}>
-            Sub get
-          </button>
-
-          <button className="js-push-button" onClick={this.handleClickAddEmail}>
-            Sub add
-          </button>
-       </div>
-
-       </div>
-    );
-  }
-
-  fetchJsFromCDN = (src, externals = []) => {
+   function fetchJsFromCDN(src, externals = []) {
       return new Promise((resolve, reject) => {
         const script = document.createElement('script')
         script.setAttribute('src', src)
@@ -120,8 +88,46 @@ export default class DBFS extends React.Component {
         document.body.appendChild(script)
       })
     }
+
+    return (
+      <Layout>
+      <div>
+      <div>
+        <button className="js-push-button" onClick={handleClick}>
+            File store get theme
+          </button>
+
+          <button className="js-push-button" onClick={handleClickAdd}>
+            add theme
+          </button>
+       </div>
+       <div>
+       <button className="js-push-button" onClick={handleClickQuote}>
+            Quote get
+          </button>
+
+          <button className="js-push-button" onClick={handleClickAddQuote}>
+            Quote add
+          </button>
+       </div>
+
+       <div>
+       <button className="js-push-button" onClick={handleClickEmail}>
+            Sub get
+          </button>
+
+          <button className="js-push-button" onClick={handleClickAddEmail}>
+            Sub add
+          </button>
+       </div>
+
+       </div>
+
+       </Layout>
+    );
 }
 
+export default DBFS;
 /**
 rule firebase
 

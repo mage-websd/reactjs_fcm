@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default [
     {
         path: '/',
@@ -34,6 +36,12 @@ export default [
         exact: true,
         isPrivate: false,
         component: import('../containers/firebase/analytics'),
+    },
+    {
+        path: '/socket',
+        exact: true,
+        isPrivate: false,
+        component: import('../containers/socket'),
     },
     // {
     //     path: '/map',
