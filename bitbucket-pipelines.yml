@@ -1,0 +1,19 @@
+pipelines:
+  pull-requests:
+    develop:
+      - step:
+        name: Build and test
+        script:
+          - curl -L https://github.com/docker/compose/releases/download/1.29.1/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose
+          - chmod +x /usr/local/bin/docker-compose
+          - docker-compose up --build -d
+          - docker-compose ps
+        services:
+          - docker
+        caches:
+          - docker
+
+definitions:
+  services:
+    docker:
+      memory: 7168
