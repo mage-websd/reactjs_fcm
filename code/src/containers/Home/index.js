@@ -23,8 +23,11 @@ function Home() {
         </p>
         <p>You clicked {count} times</p>
         <button onClick={() => setCount(count + 1)}>
-        Click me count + 1
-      </button>
+          Click me count + 1
+        </button>
+        <button onClick={() => setCount(count + 2)}>
+          Click me count + 2
+        </button>
         <a
           className="App-link"
           href="https://reactjs.org"
