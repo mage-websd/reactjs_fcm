@@ -1,5 +1,6 @@
 import React from 'react';
 import { messaging } from "../firebase/init";
+import axios from 'axios'
 
 export default class Btn extends React.Component {
 
@@ -9,20 +10,45 @@ export default class Btn extends React.Component {
 
   handleClick = () => {
     console.log('click');
+    let url = "https://dev-keycloak.yamlive.vn/auth/realms/yamlive-realm/protocol/openid-connect/token";
+    let body = {
+      grant_type: 'password',
+      client_id: 'springboot-microservice',
+      client_secret: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx',
+      username: 'employee1',
+      password: 'mypassword',
+    }
+    let headers = {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+    axios
+            .post(url, body, { headers: headers })
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
 
-    fetch("http://10.10.10.94:8000/api/news/detail?id=1")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          console.log(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          console.log(error);
-        }
-      )
+  }
+
+  handleClick2 = () => {
+    console.log('click2');
+    let url = "https://dev-keycloak.yamlive.vn/auth/realms/yamlive-realm/protocol/openid-connect/token";
+    let body = {
+
+    }
+    let headers = {
+
+    }
+    axios
+            .get(url, { headers: headers })
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
 
   }
 
@@ -65,7 +91,11 @@ export default class Btn extends React.Component {
     return (
       <div>
         <button className="js-push-button" onClick={this.handleClick}>
-            api call
+            api call POST
+          </button>
+
+          <button className="js-push-button" onClick={this.handleClick2}>
+            API get
           </button>
        </div>
     );

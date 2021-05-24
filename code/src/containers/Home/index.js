@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 // import messaging from './firebase/init.js';
-import Btn from '../firebase/fbbtn.js';
+import Api from './Api.js';
 // import LoginFacebook from '../firebase/login_facebook.js';
 // import LoginGoogle from '../firebase/login_google.js';
 
@@ -36,7 +36,7 @@ function Home() {
         >
           Learn React
         </a>
-        <div><Btn /></div>
+        <div><Api /></div>
         
         
         

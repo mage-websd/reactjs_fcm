@@ -1,9 +1,16 @@
 import React from 'react';
-import * as firebase from "firebase/app";
-import "firebase/messaging";
-import * as firebaseui from 'firebaseui'
+// import firebase from '@firebase/app';
+// import { FacebookAuthProvider } from "firebase/auth";
+// import * as firebaseui from 'firebaseui'
+import firebase from '@firebase/app';
+import { firebaseInit } from "../firebase/init";
+import "@firebase/auth";
 
-import { messaging } from "../firebase/init";
+
+// import "@firebase/messaging";
+// import "@firebase/analytics";
+
+
 
 export default class LoginFacebook extends React.Component {
 
@@ -12,33 +19,33 @@ export default class LoginFacebook extends React.Component {
   // }
 
   handleClick = () => {
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
     // var provider = new firebase.auth.FacebookAuthProvider();
-    console.log('click');
-    console.log(ui);
-    ui.start('#firebaseui-auth-container', {
-      signInOptions: [
-        {
-          provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID
-        }
-      ]
-    });
+    // // var provider = new firebase.auth.FacebookAuthProvider();
+    // console.log('click');
+    // console.log(ui);
+    // ui.start('#firebaseui-auth-container', {
+    //   signInOptions: [
+    //     {
+    //       provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID
+    //     }
+    //   ]
+    // });
 
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        // User is signed in.
-        console.log("login...", user)
-        // ...
-      } else {
-        // User is signed out.
-        // ...
-        console.log("logout...", user)
-      }
-    });
+    // firebase.auth().onAuthStateChanged(function(user) {
+    //   if (user) {
+    //     // User is signed in.
+    //     console.log("login...", user)
+    //     // ...
+    //   } else {
+    //     // User is signed out.
+    //     // ...
+    //     console.log("logout...", user)
+    //   }
+    // });
   }
 
   handleClick2 = () => {
-    console.log(11111111111)
+    console.log(11111111111, firebase, firebase.auth)
     var provider = new firebase.auth.FacebookAuthProvider();
     provider.addScope('user_birthday');
 

@@ -3,7 +3,7 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 // import {base64} from 'base-64';
 var base64 = require('base-64');
-var nj = require('numjs');
+// var nj = require('numjs');
 
 class Socket extends Component {
 
